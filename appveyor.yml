@@ -37,10 +37,10 @@ install:
   - IF NOT EXIST php-installed.txt echo extension=php_openssl.dll >> php.ini
   - IF NOT EXIST php-installed.txt echo extension=php_mbstring.dll >> php.ini
   - IF NOT EXIST php-installed.txt echo extension=php_fileinfo.dll >> php.ini
-  - IF NOT EXIST php-installed.txt appveyor DownloadFile https://phar.phpunit.de/phpunit.phar
-  - IF NOT EXIST php-installed.txt echo @php %%~dp0phpunit.phar %%* > phpunit.bat
+
   - IF NOT EXIST php-installed.txt type nul >> php-installed.txt
 
 test_script:
   - cd c:\dokuwiki\_test
-  - php phpunit
+  - appveyor DownloadFile https://phar.phpunit.de/phpunit.phar
+  - php phpunit.phar
