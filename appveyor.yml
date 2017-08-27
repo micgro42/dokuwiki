@@ -1,5 +1,4 @@
 build: false
-shallow_clone: true
 clone_folder: c:\dokuwiki
 max_jobs: 3
 platform: x86
