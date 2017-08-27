@@ -12,9 +12,6 @@ environment:
     - PHP_VERSION: '7.0.22'
     - PHP_VERSION: '5.6.31'
 
-matrix:
-  fast_finish: true
-
 cache:
   - c:\php -> appveyor.yml
   - '%LOCALAPPDATA%\Composer\files'
@@ -23,6 +20,7 @@ init:
   - SET PATH=c:\php\%PHP_VERSION%;%PATH%
 
 install:
+  - echo %PHP_VERSION%
   - IF NOT EXIST c:\php mkdir c:\php
   - IF NOT EXIST c:\php\%PHP_VERSION% mkdir c:\php\%PHP_VERSION%
   - cd c:\php\%PHP_VERSION%
