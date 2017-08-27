@@ -1,4 +1,5 @@
 build: false
+shallow_clone: true
 clone_folder: c:\dokuwiki
 max_jobs: 3
 platform: x86
@@ -7,10 +8,9 @@ pull_requests:
 version: '{build}.{branch}'
 
 environment:
-  COMPOSER_ROOT_VERSION: '6.1.x-dev'
-
   matrix:
-    - PHP_VERSION: '7.0.16'
+    - PHP_VERSION: '7.0.22'
+    - PHP_VERSION: '5.6.31'
 
 matrix:
   fast_finish: true
@@ -33,11 +33,9 @@ install:
   - IF NOT EXIST php-installed.txt echo max_execution_time=1200 >> php.ini
   - IF NOT EXIST php-installed.txt echo date.timezone="UTC" >> php.ini
   - IF NOT EXIST php-installed.txt echo extension_dir=ext >> php.ini
-  - IF NOT EXIST php-installed.txt echo extension=php_curl.dll >> php.ini
   - IF NOT EXIST php-installed.txt echo extension=php_openssl.dll >> php.ini
   - IF NOT EXIST php-installed.txt echo extension=php_mbstring.dll >> php.ini
-  - IF NOT EXIST php-installed.txt echo extension=php_fileinfo.dll >> php.ini
-
+  - IF NOT EXIST php-installed.txt echo extension=php_gd.dll >> php.ini
   - IF NOT EXIST php-installed.txt type nul >> php-installed.txt
 
 test_script:
